@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import University from './src/components/University';
+
 const App = () => {
   return (
         <View style={styles.container} >
@@ -8,6 +10,8 @@ const App = () => {
             <Text style={styles.sectionTitle}>Today's universities</Text>
             <View style={styles.items}>
               {/* Where the universities will go */}
+              <University title="University 1" />
+              <University title="University 2" />
             </View>
           </View>
         </View>
