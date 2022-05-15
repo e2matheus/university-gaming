@@ -9,7 +9,6 @@ const App = () => {
           <View style={styles.universitiesWrapper}>
             <Text style={styles.sectionTitle}>Today's universities</Text>
             <View style={styles.items}>
-              {/* Where the universities will go */}
               <University title="University 1" />
               <University title="University 2" />
             </View>
@@ -31,7 +30,9 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
   },
-  items: {},
+  items: {
+    marginTop: 30,
+  },
 });
 
 export default App;
