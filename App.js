@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import University from './src/components/University';
+import UniversityDetailsCard from './src/components/UniversityDetailsCard/UniversityDetailsCard';
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
             <View style={styles.items}>
               <University title="University 1" />
               <University title="University 2" />
+              <UniversityDetailsCard name="Sevilla University" country="Spain" aboutGaming="Unreal 5 Course" />
             </View>
           </View>
         </View>
