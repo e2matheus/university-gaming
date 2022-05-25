@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import University from '../University';
 import UniversityDetailsCard from '../UniversityDetailsCard/UniversityDetailsCard';
 
-const App = () => {
+const UniversityList = () => {
   return (
     <View style={styles.container} >
       <View style={styles.universitiesWrapper}>
@@ -35,4 +35,4 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
 });
-export default App;
+export default UniversityList;
