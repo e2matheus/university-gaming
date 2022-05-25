@@ -3,16 +3,16 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import CustomButton from '../ui/atoms/CustomButton';
 
-const University = (props) => {
+const University = ({ title, country = "US", navigation }) => {
 
   return (
     <View style={styles.item}>
       <View style={styles.sectionLeft}>
         <View style={styles.logo}></View>
-        <Text style={styles.mainText}>{props.title}</Text>
+        <Text style={styles.mainText}>{title}</Text>
       </View>
       <View>
-        <CustomButton text="Read More"/>
+        <CustomButton text="Read More" onPress={() => navigation.navigate("UniversityDetails", { name: title, country })}/>
       </View>
     </View>
   );

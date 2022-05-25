@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-const CustomButton = ({ text }) => {
+const CustomButton = ({ text, onPress }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.mainText}>{text}</Text>
+      <Text style={styles.mainText} onPress={onPress}>{text}</Text>
     </View>
   );
 }

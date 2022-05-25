@@ -2,17 +2,15 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import University from '../University';
-import UniversityDetailsCard from '../UniversityDetailsCard/UniversityDetailsCard';
 
-const UniversityList = () => {
+const UniversityList = ({ navigation }) => {
   return (
     <View style={styles.container} >
       <View style={styles.universitiesWrapper}>
         <Text style={styles.sectionTitle}>Today's universities</Text>
         <View style={styles.items}>
-          <University title="University 1" />
-          <University title="University 2" />
-          <UniversityDetailsCard name="Sevilla University" country="Spain" aboutGaming="Unreal 5 Course" />
+          <University title="University 1" navigation={navigation} />
+          <University title="Sevilla University" country="Spain" navigation={navigation} />
         </View>
       </View>
     </View>
