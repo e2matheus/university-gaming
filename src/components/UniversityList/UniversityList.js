@@ -1,9 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import University from '../University';
+import universitiesApi from '../../api/client';
+
 
 const UniversityList = ({ navigation }) => {
+  const [universities, setUniversities] = useState([]);
+
+  useEffect(() => {
+    loadUniversities();
+  }, []);
+
+  const loadUniversities = async () => {
+    const response = await universitiesApi.getUniversities();
+
+    if(!response.ok) {
+      console.log('Server error: ', response.problem);
+    } else {
+      console.log('Response data: ', response.data.name);
+    }
+  }
+
   return (
     <View style={styles.container} >
       <View style={styles.universitiesWrapper}>
