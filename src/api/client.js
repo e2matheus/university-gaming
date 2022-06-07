@@ -1,10 +1,10 @@
 import { create } from 'apisauce';
 
 const apiClient = create({
-  baseURL: 'https://swapi.dev/api/'
+  baseURL: 'http://universities.hipolabs.com/'
 })
 
-const endpoint = '/people/1';
+const endpoint = '/search?country=United+States';
 
 const getUniversities = () => apiClient.get(endpoint);
 

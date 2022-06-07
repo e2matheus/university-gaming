@@ -18,7 +18,7 @@ const UniversityList = ({ navigation }) => {
     if(!response.ok) {
       console.log('Server error: ', response.problem);
     } else {
-      console.log('Response data: ', response.data.name);
+      console.log('Response data: ', response.data[0].name);
     }
   }
 
