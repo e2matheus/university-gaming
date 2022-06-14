@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
 
 import University from '../University';
 import universitiesApi from '../../api/client';
@@ -18,17 +18,24 @@ const UniversityList = ({ navigation }) => {
     if(!response.ok) {
       console.log('Server error: ', response.problem);
     } else {
-      console.log('Response data: ', response.data[0].name);
+      setUniversities(response.data);
     }
   }
+
+  const getUniversityListItem = ({ item }) => (
+    <University title={item.name} country={item.country} navigation={navigation} />
+  );
 
   return (
     <View style={styles.container} >
       <View style={styles.universitiesWrapper}>
         <Text style={styles.sectionTitle}>Today's universities</Text>
         <View style={styles.items}>
-          <University title="University 1" navigation={navigation} />
-          <University title="Sevilla University" country="Spain" navigation={navigation} />
+          <FlatList
+            data={universities}
+            keyExtractor={university => university.name}
+            renderItem={getUniversityListItem}
+          />
         </View>
       </View>
     </View>
