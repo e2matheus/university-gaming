@@ -4,12 +4,17 @@ import { StyleSheet, Text, View } from 'react-native';
 import CustomButton from '../ui/atoms/CustomButton';
 
 const University = ({ title, country = "US", navigation }) => {
+  const MAX_LETTERS_PER_TITLE = 21;
+  const titleLettersTotal = title ? title.length : 0;
+  const titleSetToFit = titleLettersTotal > MAX_LETTERS_PER_TITLE ? title.substring(0,MAX_LETTERS_PER_TITLE - 3) : title;
+  const titleFragment = titleLettersTotal > MAX_LETTERS_PER_TITLE ? '...' : '';
+  const titleToShow = title ? `${titleSetToFit}${titleFragment}` : '';
 
   return (
     <View style={styles.item}>
       <View style={styles.sectionLeft}>
         <View style={styles.logo}></View>
-        <Text style={styles.mainText}>{title}</Text>
+        <Text style={styles.mainText}>{titleToShow}</Text>
       </View>
       <View>
         <CustomButton text="Read More" onPress={() => navigation.navigate("UniversityDetails", { name: title, country })}/>
