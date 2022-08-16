@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import CustomButton from '../ui/atoms/CustomButton';
 
-const University = ({ title, country = "US", navigation }) => {
+const University = ({ title, country = "US", aboutGaming = "", navigation }) => {
   const MAX_LETTERS_PER_TITLE = 21;
   const titleLettersTotal = title ? title.length : 0;
   const titleSetToFit = titleLettersTotal > MAX_LETTERS_PER_TITLE ? title.substring(0,MAX_LETTERS_PER_TITLE - 3) : title;
@@ -17,7 +17,7 @@ const University = ({ title, country = "US", navigation }) => {
         <Text style={styles.mainText}>{titleToShow}</Text>
       </View>
       <View>
-        <CustomButton text="Read More" onPress={() => navigation.navigate("UniversityDetails", { name: title, country })}/>
+        <CustomButton text="Read More" onPress={() => navigation.navigate("UniversityDetails", { name: title, country, aboutGaming })}/>
       </View>
     </View>
   );

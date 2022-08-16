@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import PropTypes from 'prop-types';
 
 import University from '../University';
 import universitiesApi from '../../api/client';
+
+import CustomButton from '../../ui/atoms/CustomButton';
 
 const UniversityList = ({ navigation, receiveUniversities, stateUniversities }) => {
   useEffect(() => {
@@ -28,6 +30,9 @@ const UniversityList = ({ navigation, receiveUniversities, stateUniversities }) 
     <View style={styles.container} >
       <View style={styles.universitiesWrapper}>
         <Text style={styles.sectionTitle}>Today's universities</Text>
+        <View>
+          <CustomButton text="Favorites" onPress={() => navigation.navigate("FavoriteList")}/>
+        </View>
         <View style={styles.items}>
           <FlatList
             data={stateUniversities}

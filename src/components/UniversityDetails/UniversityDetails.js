@@ -8,7 +8,7 @@ const UniversityDetails = ({ title, name, country, aboutGaming, route }) => {
   const universityName = name ? name : route.params.name;
   const universityCountry = country ? country : route.params.country;
 
-  const courseName = universityName.includes('Sevilla') ? "Unreal 5 Course" : "No infomation yet";
+  const courseName = route.params.aboutGaming ? route.params.aboutGaming : "No infomation yet";
   const universityGaming = aboutGaming ? aboutGaming : courseName;
   return (
         <View style={styles.container} >
