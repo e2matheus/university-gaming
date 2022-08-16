@@ -1,7 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import UniversityList from '../UniversityList/UniversityList';
+import UniversityList from '../UniversityList';
 import UniversityDetails from '../UniversityDetails/UniversityDetails';
 
 const Stack = createNativeStackNavigator();

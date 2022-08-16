@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
+import PropTypes from 'prop-types';
 
 import University from '../University';
 import universitiesApi from '../../api/client';
 
-
-const UniversityList = ({ navigation }) => {
-  const [universities, setUniversities] = useState([]);
-
+const UniversityList = ({ navigation, receiveUniversities, stateUniversities }) => {
   useEffect(() => {
     loadUniversities();
   }, []);
@@ -18,7 +16,7 @@ const UniversityList = ({ navigation }) => {
     if(!response.ok) {
       console.log('Server error: ', response.problem);
     } else {
-      setUniversities(response.data);
+      receiveUniversities(response.data);
     }
   }
 
@@ -32,7 +30,7 @@ const UniversityList = ({ navigation }) => {
         <Text style={styles.sectionTitle}>Today's universities</Text>
         <View style={styles.items}>
           <FlatList
-            data={universities}
+            data={stateUniversities}
             keyExtractor={university => university.name}
             renderItem={getUniversityListItem}
           />
@@ -58,4 +56,8 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
 });
+UniversityList.propTypes = {
+  stateUniversities: PropTypes.array,
+  receiveUniversities: PropTypes.func.isRequired,
+};
 export default UniversityList;

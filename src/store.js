@@ -1,6 +1,6 @@
 import { createStore } from "redux";
 
-import reducer from './src/reducers/universities';
+import reducer from './reducers/universities';
 
 const store = createStore(reducer);
 

@@ -13,6 +13,10 @@ function reducer(state = [], action) {
           onLibrary: false
         }
       ];
+    case "RECEIVE_UNIVERSITIES":
+      return [
+        ...action.universities,
+      ];
     default:
       return state;
   }

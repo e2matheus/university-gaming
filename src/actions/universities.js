@@ -6,3 +6,10 @@ export function addUniversity(name, country) {
     country,
   };
 }
+
+export function receiveUniversities(universities) {
+  return {
+    type: 'RECEIVE_UNIVERSITIES',
+    universities,
+  };
+}
