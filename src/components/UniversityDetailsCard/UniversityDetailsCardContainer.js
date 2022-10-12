@@ -17,6 +17,20 @@ const mapDispatchToProps = () => ({
       console.log('Add favorite error: ', error);
     }
   },
+  loadFavorite: async (universityName, setIsFavorite) => {
+    try {
+      const response = await favoritesApi.getFavorite(universityName);
+
+      if(!response.ok) {
+        console.log('Server error: ', response.problem);
+      } else {
+        const stateFavorite = response.data;
+        setIsFavorite(!!stateFavorite);
+      }
+    } catch (error) {
+      console.log('Get favorite error: ', error);
+    }
+  },
 });
 
 export default connect(

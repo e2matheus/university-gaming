@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import CustomButton from '../../ui/atoms/CustomButton';
 
-const UniversityDetailsCard = ({ name, country, aboutGaming, saveFavorite }) => {
+const UniversityDetailsCard = ({ name, country, aboutGaming, saveFavorite, loadFavorite }) => {
+
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const addButtonText = isFavorite ? 'Added to favorites' : 'Add to favorites';
+
+  useEffect(() => {
+    loadFavorite(name, setIsFavorite);
+  }, []);
 
   const didSelectAddToFavorites = () => {
     saveFavorite({ name, country, aboutGaming });
@@ -22,7 +30,7 @@ const UniversityDetailsCard = ({ name, country, aboutGaming, saveFavorite }) => 
         <Text style={styles.cardDetail}>{aboutGaming}</Text>
       </View>
       <View style={styles.sectionButton}>
-        <CustomButton text="Add to favorites" onPress={() => didSelectAddToFavorites()}/>
+        <CustomButton text={addButtonText} onPress={() => didSelectAddToFavorites()} disabled={isFavorite}/>
       </View>
     </View>
   );
