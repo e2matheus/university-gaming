@@ -50,6 +50,7 @@ const UniversityDetailsCard = ({ name, country, aboutGaming, saveFavorite, loadF
 
   const didSelectAddToFavorites = () => {
     saveFavorite({ name, country, aboutGaming });
+    toastInfo('Added to favorites');
     setisToastVisible(true);
   };
 
