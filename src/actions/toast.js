@@ -1,12 +1,20 @@
 import * as actionTypes from '../constants/ActionTypes';
 
-export function showInfoMessage(message, isVisible = true) {
+export function messageAction(message, toastType, isVisible = true) {
   return {
     type: actionTypes.SHOW_TOAST_MESSAGE,
-    toastType: 'info',
+    toastType,
     message,
     isVisible,
   };
+}
+
+export function showInfoMessage(message, isVisible = true) {
+  return messageAction(message, 'info', isVisible);
+}
+
+export function showErrorMessage(message, isVisible = true) {
+  return messageAction(message, 'error', isVisible);
 }
 
 export function closeMessage() {

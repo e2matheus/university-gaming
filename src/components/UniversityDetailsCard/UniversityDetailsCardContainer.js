@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import favoritesApi from '../../api/clientDetails';
-import { showInfoMessage, closeMessage } from '../../actions/toast';
+import { showInfoMessage, showErrorMessage, closeMessage } from '../../actions/toast';
 import UniversityDetailsCard from './UniversityDetailsCard';
 
 const mapDispatchToProps = dispatch => ({
@@ -11,6 +11,7 @@ const mapDispatchToProps = dispatch => ({
 
       if(!response.ok) {
         console.log('Server error: ', response.problem);
+        dispatch(showErrorMessage('Saving error. Please, try again later'));
       } else {
         console.log('response:', response.data);
         setIsFavorite(true);
