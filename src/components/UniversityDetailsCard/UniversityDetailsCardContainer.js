@@ -5,7 +5,7 @@ import { showInfoMessage, closeMessage } from '../../actions/toast';
 import UniversityDetailsCard from './UniversityDetailsCard';
 
 const mapDispatchToProps = dispatch => ({
-  saveFavorite: async (university) => {
+  saveFavorite: async (university, setIsFavorite) => {
     try {
       const response = await favoritesApi.addFavorite(university);
 
@@ -13,6 +13,8 @@ const mapDispatchToProps = dispatch => ({
         console.log('Server error: ', response.problem);
       } else {
         console.log('response:', response.data);
+        setIsFavorite(true);
+        dispatch(showInfoMessage('Added to favorites'));
       } 
     } catch (error) {
       console.log('Add favorite error: ', error);
@@ -31,9 +33,6 @@ const mapDispatchToProps = dispatch => ({
     } catch (error) {
       console.log('Get favorite error: ', error);
     }
-  },
-  toastInfo: (message, isVisible = true) => {
-    dispatch(showInfoMessage(message, isVisible));
   },
   closeToast: () => {
     dispatch(closeMessage());

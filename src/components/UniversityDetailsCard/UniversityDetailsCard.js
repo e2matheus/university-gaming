@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, BackHandler } from 'react-native';
 
 import CustomButton from '../../ui/atoms/CustomButton';
 
-const UniversityDetailsCard = ({ name, country, aboutGaming, saveFavorite, loadFavorite, toastInfo, closeToast, navigation }) => {
+const UniversityDetailsCard = ({ name, country, aboutGaming, saveFavorite, loadFavorite, closeToast, navigation }) => {
 
   const [isFavorite, setIsFavorite] = useState(false);
   const [isToastVisible, setisToastVisible] = useState(false);
@@ -49,8 +49,7 @@ const UniversityDetailsCard = ({ name, country, aboutGaming, saveFavorite, loadF
   }, []);
 
   const didSelectAddToFavorites = () => {
-    saveFavorite({ name, country, aboutGaming });
-    toastInfo('Added to favorites');
+    saveFavorite({ name, country, aboutGaming }, setIsFavorite);
     setisToastVisible(true);
   };
 
