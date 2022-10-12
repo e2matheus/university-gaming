@@ -1,9 +1,10 @@
+import * as actionTypes from '../constants/ActionTypes';
 
 let lastId = 0;
 
-function reducer(state = [], action) {
+function universities(state = [], action) {
   switch (action.type) {
-    case "ADD_UNIVERSITY":
+    case actionTypes.ADD_UNIVERSITY:
       return [
         ...state,
         {
@@ -13,7 +14,7 @@ function reducer(state = [], action) {
           onLibrary: false
         }
       ];
-    case "RECEIVE_UNIVERSITIES":
+    case actionTypes.RECEIVE_UNIVERSITIES:
       return [
         ...action.universities,
       ];
@@ -22,4 +23,4 @@ function reducer(state = [], action) {
   }
 }
 
-export default reducer;
+export default universities;

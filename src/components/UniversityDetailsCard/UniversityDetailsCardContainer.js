@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 
 import favoritesApi from '../../api/clientDetails';
+import { showInfoMessage, closeMessage } from '../../actions/toast';
 import UniversityDetailsCard from './UniversityDetailsCard';
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = dispatch => ({
   saveFavorite: async (university) => {
     try {
       const response = await favoritesApi.addFavorite(university);
@@ -31,8 +32,15 @@ const mapDispatchToProps = () => ({
       console.log('Get favorite error: ', error);
     }
   },
+  toastInfo: (message, isVisible = true) => {
+    dispatch(showInfoMessage(message, isVisible));
+  },
+  closeToast: () => {
+    dispatch(closeMessage());
+  },
 });
 
 export default connect(
+  null,
   mapDispatchToProps,
 )(UniversityDetailsCard);

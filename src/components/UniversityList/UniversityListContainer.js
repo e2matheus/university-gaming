@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import { receiveUniversities } from '../../actions/universities';
 import UniversityList from './UniversityList';
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ universities }) => {
 
-  if (!state) {
+  if (!universities) {
     return { stateUniversities: [] };
   }
 
   return {
-    stateUniversities: state,
+    stateUniversities: universities,
   };
 };
 

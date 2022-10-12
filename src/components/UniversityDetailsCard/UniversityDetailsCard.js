@@ -1,21 +1,57 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, BackHandler } from 'react-native';
 
 import CustomButton from '../../ui/atoms/CustomButton';
 
-const UniversityDetailsCard = ({ name, country, aboutGaming, saveFavorite, loadFavorite }) => {
+const UniversityDetailsCard = ({ name, country, aboutGaming, saveFavorite, loadFavorite, toastInfo, closeToast, navigation }) => {
 
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isToastVisible, setisToastVisible] = useState(false);
 
   const addButtonText = isFavorite ? 'Added to favorites' : 'Add to favorites';
 
   useEffect(() => {
+    const interval = setInterval(() => {
+      if (isToastVisible) {
+        closeToast();
+      }
+    }, 5000);
+
+    return () => {
+      clearInterval(interval);
+    }
+  }, [isToastVisible, closeToast]);
+
+  useEffect(() => {
     loadFavorite(name, setIsFavorite);
+
+    const handleBackButtonPressAndroid = () => {
+      if (!navigation.isFocused()) {
+        return false;
+      }
+
+      closeToast();
+      navigation.goBack();
+      return true;
+    };
+
+    BackHandler.addEventListener(
+      'hardwareBackPress',
+      handleBackButtonPressAndroid
+    );
+
+    return () => {
+      BackHandler.removeEventListener(
+        'hardwareBackPress',
+        handleBackButtonPressAndroid
+      );
+    };
   }, []);
 
   const didSelectAddToFavorites = () => {
     saveFavorite({ name, country, aboutGaming });
-  }
+    setisToastVisible(true);
+  };
 
   return (
     <View style={styles.item}>
