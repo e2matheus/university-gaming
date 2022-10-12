@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 
 const Toast = ({ type = 'info', message = 'Message', isVisible = false }) => {
-  const toastProperties = {
+  const toastColorProperties = {
     info: {
       backgroundColor: '#5BC0DC',
     },
@@ -14,9 +14,13 @@ const Toast = ({ type = 'info', message = 'Message', isVisible = false }) => {
       backgroundColor: '#DC3545',
     },
   };
+  const toastHeight = isVisible ? '15%' : 0;
 
   return (
-    <View style={[styles.container, ...[{ backgroundColor: toastProperties[type].backgroundColor }]]} >
+    <View style={[styles.container, ...[{
+      backgroundColor: toastColorProperties[type].backgroundColor,
+      height: toastHeight,
+    }]]} >
       {!isVisible || 
         <View style={styles.wrapper}>
           <Text style={styles.sectionTitle}>{message}</Text>
@@ -28,14 +32,16 @@ const Toast = ({ type = 'info', message = 'Message', isVisible = false }) => {
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
-    top: '12%',
-    left: '4%',
-    right: '4%',
+    top: 0,
+    left: 0,
+    right: 0,
     zIndex: 1,
     elevation: 1,
   },
   wrapper: {
     padding: 14,
+    paddingTop: 75,
+    marginLeft: 8,
     textAlign: 'center',
   },
   sectionTitle: {

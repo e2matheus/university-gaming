@@ -15,7 +15,7 @@ const UniversityDetailsCard = ({ name, country, aboutGaming, saveFavorite, loadF
       if (isToastVisible) {
         closeToast();
       }
-    }, 5000);
+    }, 3000);
 
     return () => {
       clearInterval(interval);
