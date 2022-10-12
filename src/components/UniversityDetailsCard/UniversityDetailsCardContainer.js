@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import favoritesApi from '../../api/clientDetails';
-import { showInfoMessage, showErrorMessage, closeMessage } from '../../actions/toast';
+import { showSuccessMessage, showErrorMessage, closeMessage } from '../../actions/toast';
 import UniversityDetailsCard from './UniversityDetailsCard';
 
 const mapDispatchToProps = dispatch => ({
@@ -15,7 +15,7 @@ const mapDispatchToProps = dispatch => ({
       } else {
         console.log('response:', response.data);
         setIsFavorite(true);
-        dispatch(showInfoMessage('Added to favorites'));
+        dispatch(showSuccessMessage('Added to favorites'));
       } 
     } catch (error) {
       console.log('Add favorite error: ', error);

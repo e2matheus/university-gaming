@@ -13,6 +13,10 @@ export function showInfoMessage(message, isVisible = true) {
   return messageAction(message, 'info', isVisible);
 }
 
+export function showSuccessMessage(message, isVisible = true) {
+  return messageAction(message, 'success', isVisible);
+}
+
 export function showErrorMessage(message, isVisible = true) {
   return messageAction(message, 'error', isVisible);
 }
