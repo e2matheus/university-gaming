@@ -3,7 +3,11 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import CustomButton from '../../ui/atoms/CustomButton';
 
-const UniversityDetailsCard = ({ name, country, aboutGaming }) => {
+const UniversityDetailsCard = ({ name, country, aboutGaming, saveFavorite }) => {
+
+  const didSelectAddToFavorites = () => {
+    saveFavorite({ name, country, aboutGaming });
+  }
 
   return (
     <View style={styles.item}>
@@ -18,7 +22,7 @@ const UniversityDetailsCard = ({ name, country, aboutGaming }) => {
         <Text style={styles.cardDetail}>{aboutGaming}</Text>
       </View>
       <View style={styles.sectionButton}>
-        <CustomButton text="Add to favorites"/>
+        <CustomButton text="Add to favorites" onPress={() => didSelectAddToFavorites()}/>
       </View>
     </View>
   );

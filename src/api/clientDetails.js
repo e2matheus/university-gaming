@@ -7,7 +7,9 @@ const apiClient = create({
 const endpoint = '/favorites';
 
 const getFavorites = () => apiClient.get(endpoint);
+const addFavorite = university => apiClient.post(endpoint, university);
 
 export default {
   getFavorites,
+  addFavorite,
 }

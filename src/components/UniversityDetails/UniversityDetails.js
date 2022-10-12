@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import UniversityDetailsCard from '../UniversityDetailsCard/UniversityDetailsCard';
+import UniversityDetailsCard from '../UniversityDetailsCard';
 
 const UniversityDetails = ({ title, name, country, aboutGaming, route }) => {
   const universityTitle = title ? title : route.params.name;
